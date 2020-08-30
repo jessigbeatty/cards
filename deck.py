@@ -1,7 +1,25 @@
+import random
+
 class Deck:
-    """a deck of cards"""
+    """a standard deck of playing cards"""
     def __init__(self):
-        pass
+        self.cards = []
+
+        # creates ordered deck
+        suits = ["spades", "clubs", "diamonds", "hearts"]
+        for suit in suits:
+            for i in range(1,14):
+                self.cards.append(Card(suit, i))
+
+    def shuffle(self):
+        random.shuffle(self.cards)
+
+    def draw(self):
+        self.cards[0].show()
+
+    def show_all(self):
+        for card in self.cards:
+            card.show()
 
 class Card:
     """an individual card"""
@@ -13,13 +31,8 @@ class Card:
         print(f"the {self.value} of {self.suit}")
 
 # making cards
-suits = ["spades", "clubs", "diamonds", "hearts"]
-cards = []
-for suit in suits:
-    for i in range(1,14):
-        cards.append(Card(suit, i))
 
-# show the cards you just created
-for card in cards:
-    card.show()
+my_deck = Deck()
 
+my_deck.shuffle()
+my_deck.draw()
