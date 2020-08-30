@@ -16,10 +16,14 @@ class Deck:
 
     def draw(self):
         self.cards[0].show()
+        return self.cards.pop(0)
 
     def show_all(self):
         for card in self.cards:
             card.show()
+
+    def count(self):
+        print(len(self.cards))
 
 class Card:
     """an individual card"""
@@ -28,10 +32,12 @@ class Card:
         self.value = value
 
     def show(self):
-        print(f"the {self.value} of {self.suit}")
+        print(f"{self.value} of {self.suit}")
 
 # testing functions
 my_deck = Deck()
 
 my_deck.shuffle()
+my_deck.count() 
 my_deck.draw()
+my_deck.count()
