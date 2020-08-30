@@ -15,7 +15,6 @@ class Deck:
         random.shuffle(self.cards)
 
     def draw(self):
-        self.cards[0].show()
         return self.cards.pop(0)
 
     def show_all(self):
@@ -33,11 +32,3 @@ class Card:
 
     def show(self):
         print(f"{self.value} of {self.suit}")
-
-# testing functions
-my_deck = Deck()
-
-my_deck.shuffle()
-my_deck.count() 
-my_deck.draw()
-my_deck.count()
