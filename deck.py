@@ -30,8 +30,7 @@ class Card:
     def show(self):
         print(f"the {self.value} of {self.suit}")
 
-# making cards
-
+# testing functions
 my_deck = Deck()
 
 my_deck.shuffle()
