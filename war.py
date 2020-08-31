@@ -1,3 +1,4 @@
+import time
 import deck
 import player
 
@@ -13,7 +14,6 @@ def play_turn():
     print("Player 1 plays: ", end='')
     p1_played.show()
     print("Player 2 plays: ", end='')
-    # it breaks here on the second time through looping and i don't get whyyyy
     p2_played.show()
     return p1_played, p2_played
 
@@ -21,13 +21,22 @@ def play_turn():
 def compare(p1, p2):
     if p1.value > p2.value:
         print("Player 1 wins.")
-        player1.hand.append(pot)
+        player1.hand.extend(pot)
+        print(f"Player 1 has {len(player1.hand)} cards.")
+        print(f"Player 2 has {len(player2.hand)} cards.\n")
     elif p1.value < p2.value:
         print("Player 2 wins.")
-        player2.hand.append(pot)
+        player2.hand.extend(pot)
+        print(f"Player 1 has {len(player1.hand)} cards.")
+        print(f"Player 2 has {len(player2.hand)} cards.\n")
     else:
         print("This means WAR!!!")
-        # implement WAR
+        # placeholder war gives both players their cards back
+        print(f"Player 1 has {len(player1.hand)} cards.")
+        print(f"Player 2 has {len(player2.hand)} cards.\n")
+        player1.hand.append(p1)
+        player2.hand.append(p2)
+
 
 player1 = player.Player()
 player2 = player.Player()
@@ -45,4 +54,4 @@ while len(my_deck.cards) != 0:
 while len(player1.hand) != 0 and len(player2.hand) != 0:
     p1, p2 = play_turn()
     compare(p1, p2)
-
+    time.sleep(.5)          # mostly so i can watch
