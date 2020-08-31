@@ -21,22 +21,30 @@ def play_turn():
 def compare(p1, p2):
     if p1.value > p2.value:
         print("Player 1 wins.")
-        player1.hand.extend(pot)
+        player1.hand = pot + player1.hand
         print(f"Player 1 has {len(player1.hand)} cards.")
         print(f"Player 2 has {len(player2.hand)} cards.\n")
     elif p1.value < p2.value:
         print("Player 2 wins.")
-        player2.hand.extend(pot)
+        player2.hand = pot + player2.hand
         print(f"Player 1 has {len(player1.hand)} cards.")
         print(f"Player 2 has {len(player2.hand)} cards.\n")
     else:
         print("This means WAR!!!")
-        # placeholder war gives both players their cards back
+        war()
         print(f"Player 1 has {len(player1.hand)} cards.")
         print(f"Player 2 has {len(player2.hand)} cards.\n")
-        player1.hand.append(p1)
-        player2.hand.append(p2)
 
+def war():
+    # down cards
+    pot.append(player1.hand.pop())
+    pot.append(player2.hand.pop())
+    # up cards
+    p1_played = player1.hand.pop()
+    p2_played = player2.hand.pop()
+    pot.append(p1_played)
+    pot.append(p2_played)
+    compare(p1_played, p2_played)
 
 player1 = player.Player()
 player2 = player.Player()
