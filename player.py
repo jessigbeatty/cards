@@ -14,3 +14,6 @@ class Player:
     def show_hand(self):
         for card in self.hand:
             card.show()
+    
+    def count():
+        pass

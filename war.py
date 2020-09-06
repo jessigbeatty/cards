@@ -1,4 +1,5 @@
 import time
+import os
 import deck
 import player
 
@@ -11,6 +12,7 @@ def play_turn():
     p2_played = player2.hand.pop()
     pot.append(p1_played)
     pot.append(p2_played)
+    os.system('clear')
     print("Player 1 plays: ", end='')
     p1_played.show()
     print("Player 2 plays: ", end='')
@@ -62,4 +64,3 @@ while len(my_deck.cards) != 0:
 while len(player1.hand) != 0 and len(player2.hand) != 0:
     p1, p2 = play_turn()
     compare(p1, p2)
-    time.sleep(.5)          # mostly so i can watch
